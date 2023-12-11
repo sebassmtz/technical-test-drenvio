@@ -5,9 +5,10 @@ import cors from "cors"
 import morgan from "morgan"
 import dotenv from "dotenv"
 
-import router from "./routers/Product.router"
+import router from "./infrastructure/routers/IndexRouter"
 
 import { connectDB } from "./helpers/Database"
+import swaggerDocs from "./helpers/Swagger"
 
 const app = express()
 
@@ -23,13 +24,13 @@ app.use(morgan("dev"))
 app.use(compression())
 app.use(bodyParser.json())
 
-app.use("/", router)
-
 const { PORT, MONGODB_URI } = process.env
 
-connectDB(MONGODB_URI as string)
 app.listen(PORT, () => {
+  connectDB(MONGODB_URI as string)
   console.log(`server running on http://localhost:${PORT}/`)
+  router(app)
+  swaggerDocs(app, Number(PORT))
 })
 
 export default app
