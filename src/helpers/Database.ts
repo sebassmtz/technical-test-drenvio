@@ -1,11 +1,8 @@
 import mongoose from "mongoose"
-
-const { MONGODB_URI } = process.env || "mongodb://localhost:27017/"
-
-export const connectDB = async (): Promise<void> => {
-  console.log(MONGODB_URI)
+export const connectDB = async (url: string): Promise<void> => {
+  console.log(url)
   try {
-    await mongoose.connect(MONGODB_URI as string)
+    await mongoose.connect(url)
     console.log("MongoDB is connected")
   } catch (error) {
     console.log(error)
