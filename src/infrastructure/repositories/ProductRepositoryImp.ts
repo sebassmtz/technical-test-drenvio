@@ -6,7 +6,6 @@ export class ProductRepositoryImp implements IProductRepository {
   public async find(id: string): Promise<ProductModel | null> {
       const result = await ProductDTO.findById(id)
       if(!result) return result
-    // Tengo que pasar de DTO a Model
     return new ProductModel(
       result._id.toString(),
       result.name,

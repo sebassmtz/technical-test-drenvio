@@ -7,7 +7,14 @@ export class FindProductUseCase implements IUseCase<string, ProductModel> {
 
   public async execute(id: string): Promise<ProductModel> {
     const product = await this._productRepository.find(id)
-    if (!product) throw new Error("Product not found")
+    if (!product) return {
+      _id: '',
+      name: '',
+      price: 0,
+      brand: '',
+      stock: 0,
+      special_price: 0
+    };
     return product
   }
 }
