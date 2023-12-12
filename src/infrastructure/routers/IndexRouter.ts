@@ -1,5 +1,6 @@
 import { Router } from "express"
 import productRouter from "./ProductRouter"
+import userRouter from "./UserRouter"
 
 const router = Router()
 
@@ -14,24 +15,15 @@ export default function (app: Router): Router {
    *     - message
    *    example:
    *      message: error message
-   *   GetAllProductsStock:
+   *   NotFound:
    *    type: object
    *    required:
-   *     - _id
-   *     - name
-   *     - price
-   *     - brand
-   *     - stock
-   *     - special_price
+   *      - message
    *    example:
-   *      _id: string
-   *      name: string
-   *      price: number
-   *      brand: string
-   *      stock: number
-   *      special_price: string
+   *      message: Not found
    */
   productRouter(app)
+  userRouter(app)
 
   return router
 }

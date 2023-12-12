@@ -6,7 +6,7 @@ const options: swaggerJsdoc.Options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "DrEnvio Challenge Bakcend API",
+      title: "DrEnvio Challenge Backend API",
       version: "1.0.0",
       description: 'API using Express for a sneakers store',
     },
